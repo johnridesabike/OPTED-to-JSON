@@ -7,8 +7,8 @@ This is a Python script that converts the OPTED from HTML to JSON. The code can 
 Outputted files are written to the `/json/` directory. They're separated into a file for each letter. The structure of the JSON data is an object with the words as names and the values are arrays of definitions. Each definition is an object with the part of speech and definition text. See this example:
 
 ```
-{'word': [ {'partOfSpeech': 'noun', 'text' : 'definition one'},
-    {'partOfSpeech': 'verb', 'text' : 'definition two'} ] 
+{"word": [ {"partOfSpeech": "noun", "text" : "definition one"},
+            {"partOfSpeech": "verb", "text" : "definition two"} ] 
 }
 ```
 
@@ -16,4 +16,4 @@ There are several other scripts out there that convert the Webster Unabridged Di
 
 Depending on your needs, the [GNU Collaborative International Dictionary of English (GCIDE)](http://gcide.gnu.org.ua) may be more useful, since it's much more complete. It's licensed under the GPL, so it does come with conditions for its use. The text of the OPTED is public domain.
 
-The Python code of this repository is MIT licensed.
+The Python code portion of this repository is MIT licensed.

@@ -15,8 +15,8 @@ trimdefs = re.compile('(^\) )|( \()')
 class Opted2Json(HTMLParser):
     def __init__(self):
         ''' Dictionary object structured as:
-        { 'word': [ {'partOfSpeech': 'noun', 'text' : 'definition one'},
-                    {'partOfSpeech': 'verb', 'text' : 'definition two'} ] 
+        {"word": [ {"partOfSpeech": "noun", "text" : "definition one"},
+                   {"partOfSpeech": "verb", "text" : "definition two"} ] 
         }
         '''
         self.dict = {}
@@ -87,16 +87,14 @@ for word in new:
 for l in letters:
     with open(path.join(JSON_DIR, l + '.json'), 'r') as f:
         data = json.load(f)
-    
     for word in letters[l]:
         # we can't just update() the dictionary because that would override
         # words that already have definitions. We want to add additional
         # definitions.
         if word in data:
-            data[word] = data[word] + letters[l][word]
+            data[word] += letters[l][word]
         else:
             data[word] = letters[l][word]
-    
     with open(path.join(JSON_DIR, l + '.json'), 'w') as f:
         json.dump(data, f, indent=0)
     print('Updated', l + '.json', 'with', len(letters[l]), 'new words')
